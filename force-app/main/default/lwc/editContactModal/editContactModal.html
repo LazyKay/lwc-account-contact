@@ -1,0 +1,30 @@
+<template>
+	<template if:true={showModal}>
+	     <section role="dialog" class="slds-modal slds-fade-in-open">
+		     <div class="slds-modal__container">
+			     <header class="slds-modal__header">
+				     <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Edit Contact</h2>
+			     </header>
+		     
+		     <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+			     <lightning-record-edit-form
+					object-api-name={contactObject}
+					record-id={recordId}
+			      >
+			     <lightning-input-field field-name={accountNameField} readonly=true> </lightning-input-field>
+			     <lightning-input-field field-name={firstNameField}> </lightning-input-field>
+			     <lightning-input-field field-name={lastNameField}> </lightning-input-field>
+			     <lightning-input-field field-name={birthDateField}> </lightning-input-field>
+			     <lightning-input-field field-name={phoneField}> </lightning-input-field>
+			     <lightning-input-field field-name={emailField}> </lightning-input-field>
+			     <lightning-input-field field-name={mobilePhoneField}> </lightning-input-field>
+			     </lightning-record-edit-form>
+			     <lightning-layout-item size="12" class="slds-align_absolute-center">
+				<lightning-button label="Cancel" class="slds-m-right_small" onclick={handleCancel}></lightning-button>
+				<lightning-button type="submit" title="Save" label="Save" onclick={handleSave}></lightning-button>
+			     </lightning-layout-item>
+		     </div>
+		     </div>	
+	     </section>
+	 </template>	
+     </template>
