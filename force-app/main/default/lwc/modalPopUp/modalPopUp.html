@@ -1,0 +1,20 @@
+<template>
+   <template if:true={showModal}>
+        <section role="dialog" class="slds-modal slds-fade-in-open">
+		<div class="slds-modal__container">
+			<header class="slds-modal__header">
+				<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Add Account</h2>
+                        </header>
+		
+		<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+			<lightning-record-form
+				    object-api-name={accountObject}
+				    fields={myFields}
+				    onsuccess={handleSave}
+				    oncancel={handleCancel}>
+			</lightning-record-form>
+		</div>
+		</div>	
+	</section>
+    </template>	
+</template>

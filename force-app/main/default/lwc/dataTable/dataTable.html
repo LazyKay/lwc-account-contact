@@ -1,0 +1,37 @@
+<template>
+	<lightning-card title=Accounts >
+		      <template if:true={btnVisibility}>
+			 <lightning-button class = "slds-m-left_x-small slds-m-bottom_x-small" variant="destructive" label="Delete" title="Destructive action" onclick={handleDelete}></lightning-button>
+		      </template>	
+			 <lightning-button class = "slds-m-left_x-small slds-m-bottom_x-small" variant="brand" label="Add Accound" title="Primary action" onclick={showModalPopUp}></lightning-button>
+			 <c-modal-pop-up
+			 	show-modal={showModal} 
+			 	onsave={closeModal}
+			 	oncancel={closeModal}>
+			</c-modal-pop-up>
+			<c-delete-confirmation
+			        show-delete-modal={showDeleteModal}
+                                record-id={recordId}
+				ondeleted={refreshData}
+				oncanceled={handleCancel}>
+			</c-delete-confirmation>
+		<template if:true={accounts}>	    
+		    <lightning-datatable
+		    	key-field="Id"
+		       	data={accounts}
+		    	columns={columns}
+		    	sorted-by={sortBy}
+                    	sorted-direction={sortDirection}
+                    	onsort={onSort}
+			onrowselection={handleRowSelection}
+			>
+	       	    </lightning-datatable>
+               </template>
+	       <template if:true={isAccountSelected}>
+	       			<c-contact-table
+					id-list={accountIdList}
+		   			is-account-selected={isAccountSelected}>
+               			</c-contact-table>
+		</template>	
+	</lightning-card>
+</template>

@@ -1,0 +1,35 @@
+<template>
+	<template if:true={showContactTable}>
+	   <lightning-card title="Contacts for Selected Accounts" >
+		<template if:true={btnVisibility}>
+			<lightning-button class = "slds-m-left_x-small slds-m-bottom_x-small" variant="destructive" label="Delete" title="Destructive action" onclick={handleDelete}></lightning-button>
+		</template>
+		<template if:true={btnVisibility}>
+			<lightning-button class = "slds-m-left_x-small slds-m-bottom_x-small" variant="brand" label="Edit" title="Edit action" onclick={handleEdit}></lightning-button>
+		</template>
+		<c-delete-confirmation
+			        show-delete-modal={showDeleteModal}
+                                record-id={recordId}
+				ondeleted={refreshData}
+				oncanceled={handleCancel}>
+		</c-delete-confirmation>
+		<c-edit-contact-modal
+		        record-id={recordId}
+			show-modal={showEditModal}
+			onsave={refreshData}
+			oncancel={closeModal}
+		>
+		</c-edit-contact-modal>		    
+		<lightning-datatable
+			key-field="Id"
+			   data={contacts}
+			   columns={columns}
+			   sorted-by={sortBy}
+                    	   sorted-direction={sortDirection}
+                    	   onsort={onSort}
+			   onrowselection={handleRowSelection}
+		>
+		</lightning-datatable>
+	   </lightning-card>
+	</template>
+</template>
